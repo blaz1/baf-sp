@@ -1,0 +1,59 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>register</title>
+  <meta name="description" content="Bet against your friends in everyday life">
+  <meta name="author" content="Blaz Artac">
+  <script src="javascript/jquery.js"></script>
+  <script src="javascript/main.js"></script>
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+  <nav id="topNav">
+    <div id="homePage"><a href="index.html">Bet A Friend</a></div>
+    <div id="mainNav">
+      <a href="browse-bets.html">Browse</a>
+    </div>
+    <div id="profileNav">
+      <a href="register.html">Login/Register</a>
+    </div>
+  </nav>
+
+  <div class="content" id="editAcc">
+    <h1>Create account</h1>
+    <img src="images/profile.jpg" class="userImg"  height="180" width="189" alt="userImage" />
+
+    <form>
+        <div class="column floatLeft">
+                <div class="row">
+                    <div class="col1"><label>Username: </label><br></div>
+                    <div class="col2"><input size="39" type="text" id="regName"></div>
+                </div>
+                <div class="row">
+                    <div class="col1"><label>E-mail: </label><br></div>
+                    <div class="col2"><input type="email" size="39" id="regMail"></div>
+                </div>
+                <div class="row">
+                    <div class="col1"><label>Password: </label><br></div>
+                    <div class="col2"><input type="password" size="39" id="regPwd1"><span class="editAccPwdError">Not matching</span></div>
+                </div>  
+                <div class="row">
+                    <div class="col1"><label>Repeat password: </label><br></div>
+                    <div class="col2"><input type="password" size="39" id="regPwd2"><span class="editAccPwdError">Not matching</span></div>
+                </div>
+            <input type="button" id="regAccButton" value="Register" onclick="validateRegAcc();">                  
+            </div> 
+    </form>   
+    <img src="images/editImg.png" class="editAccImg" onclick="uploadImg();" alt="editImgPicture"/>
+    <input type="file" id="editAccImgUpload">
+  </div>
+</body>
+</html>
