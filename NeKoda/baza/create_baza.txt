@@ -1,0 +1,72 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `artac_blaz_b1` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
+USE `artac_blaz_b1` ;
+
+-- -----------------------------------------------------
+-- Table `mydb`.`user`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `artac_blaz_b1`.`user` (
+  `id_user` INT NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(60) NOT NULL,
+  `password` VARCHAR(45) NOT NULL,
+  `creation_time` DATETIME NULL,
+  PRIMARY KEY (`id_user`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`bets`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `artac_blaz_b1`.`bets` (
+  `id_bets` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(70) NULL,
+  `description` VARCHAR(700) NULL,
+  `create_time` DATETIME NULL,
+  `start_time` DATETIME NULL,
+  `end_time` DATETIME NULL,
+  `reward` VARCHAR(200) NULL,
+  `opponents` VARCHAR(100) NULL,
+  `owner_id` INT NOT NULL,
+  PRIMARY KEY (`id_bets`),
+  INDEX `fk_bets_user_idx` (`owner_id` ASC),
+  CONSTRAINT `fk_bets_user`
+    FOREIGN KEY (`owner_id`)
+    REFERENCES `artac_blaz_b1`.`user` (`id_user`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`rules`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `artac_blaz_b1`.`rules` (
+  `id_rule` INT NOT NULL AUTO_INCREMENT,
+  `description` VARCHAR(500) NULL,
+  `bet_id` INT NOT NULL,
+  PRIMARY KEY (`id_rule`),
+  INDEX `fk_rules_bets1_idx` (`bet_id` ASC),
+  CONSTRAINT `fk_rules_bets1`
+    FOREIGN KEY (`bet_id`)
+    REFERENCES `artac_blaz_b1`.`bets` (`id_bets`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
