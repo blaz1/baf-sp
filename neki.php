@@ -1,2 +1,2 @@
-<?php echo "neki";
+<?php echo "neki je vredu";
  ?>
