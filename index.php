@@ -55,22 +55,27 @@ if(!isset($_COOKIE[$cookie_name])) {
 	</nav>
 -->
 	<?php
-$cookie_name = "user";
-if(!isset($_COOKIE[$cookie_name])) {
-    include 'navigation-unknown.html';
-} else {
-    include 'navigation-known.html';
-}
-  ?>
+		$cookie_name = "username";
+		if(!isset($_COOKIE[$cookie_name])) {
+		    include 'navigation-unknown.html';
+		} else {
+		    include 'navigation-known.html';
+		}
+  	?>
 
 	<div class="content">
 		<h1>Welcome to BetAFriend application</h1>
 		<p id="mainPageDesc">BetAFriend application allows users to create new bets and challenge your friends or simply browse through the many of already created bets. </p>
 
 		<div id="mainPageLinks">
-			<a href="create-bet.php">Create</a>
-			<p>or</p>
-			<a class="floatRight" href="browse-bets.php">Browse</a>
+			<?php
+				$cookie_name = "username";
+				if(isset($_COOKIE[$cookie_name])) {
+				    include 'mainPageLinksKnown.html';
+				} else {
+					echo "<a id='browseOnly' href='browse-bets.php'>Browse</a>";
+				}
+			?>
 		</div>
 
 		<div id="mainPageStats">

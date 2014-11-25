@@ -185,3 +185,13 @@ function validateRegAcc () {
 }
 
 /*END REGISTER ACCOUNT FUNCTIONALITY*/
+
+/*START LOGIN FUNCTIONALITY*/
+
+function checkLogin() {
+	if($("#loginButton").val() == "") {
+		$("#loginButton").css("background-color","red");
+	}
+}
+
+/*END LOGIN FUNCTIONALITY*/

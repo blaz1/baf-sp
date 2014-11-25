@@ -1,6 +1,8 @@
 <?php 
 	include 'header.html'; 
 ?>
+<title>Login</title>
+</head>
 
 <body>
 	<!--<nav id="topNav">
@@ -26,18 +28,21 @@
   	<div class="content" id="loginPage">
 
   		<h1>Login</h1>
-  		<form id="loginForm">
+  		<form id="loginForm" method="post" action="loginScript.php">
   			<div class="column floatLeft">
                 <div class="row">
                     <div class="col1"><label>Username: </label><br></div>
-                    <div class="col2"><input size="20" type="text" id="regName"></div>
+                    <div class="col2"><input size="20" type="text" id="loginName" name="username"></div>
                 </div>                
                 <div class="row">
                     <div class="col1"><label>Password: </label><br></div>
-                    <div class="col2"><input type="password" size="20" id="regPwd1"><span class="editAccPwdError">Not matching</span></div>
+                    <div class="col2"><input type="password" size="20" id="loginPwd" name="password"><span class="editAccPwdError">Not matching</span></div>
                 </div> 
-            <input type="button" id="loginButton" value="Login" onclick="validateRegAcc();">                  
-            </div> 
+                <div class="loginRememberMe">
+                	<label>Remember Me: </label><input type="checkbox" name="rememberme" value="1">
+                </div>
+            <input type="submit" id="loginButton" value="Login" onclick="checkLogin();">                  
+           </div> 
   		</form>
 	</div>
 </body>

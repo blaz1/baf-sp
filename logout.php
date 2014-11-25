@@ -1,3 +1,10 @@
+<?php
+
+setcookie("username", "", time()-3600);
+setcookie("password", "", time()-3600);
+
+?>
+
 <?php include 'header.html' ?>
 <title>Logged out</title>
 </head>

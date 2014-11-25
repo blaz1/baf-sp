@@ -4,7 +4,7 @@
 
 <body>
 	<?php
-		$cookie_name = "user";
+		$cookie_name = "username";
 		if(!isset($_COOKIE[$cookie_name])) {
 		    include 'navigation-unknown.html';
 		} else {

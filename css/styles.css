@@ -201,6 +201,12 @@ a {
 	color:black;
 }
 
+#mainPageLinks #browseOnly {
+	margin: 0 auto;
+	display:block;
+	width:3em;
+}
+
 #mainPageStats {
 	display:block;
 	position:relative;
@@ -546,4 +552,10 @@ input#editAccButton, input#regAccButton {
 #loginPage {
 	text-align: center;
 }
+
+.loginRememberMe {
+	position: relative;
+	margin:-1.2em 0 1em 0;
+}
+
 /*END LOGIN*/
