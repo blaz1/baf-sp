@@ -527,3 +527,23 @@ input#editAccButton, input#regAccButton {
 }
 
 /*END LOGOUT*/
+
+/*START LOGIN*/
+
+#loginForm {
+	width:23em;
+	margin:5em auto 0 auto;
+}
+
+#loginForm .column {
+	width:100%;
+}
+
+#loginButton {
+	margin:0 auto;
+}
+
+#loginPage {
+	text-align: center;
+}
+/*END LOGIN*/

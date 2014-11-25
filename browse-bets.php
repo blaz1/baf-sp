@@ -1,38 +1,16 @@
-<!doctype html>
-
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-
-  <title>Browse bets</title>
-  <meta name="description" content="Bet against your friends in everyday life">
-  <meta name="author" content="Blaz Artac">
-  <script src="javascript/jquery.js"></script>
-  <script src="javascript/main.js"></script>
-  <link rel="stylesheet" href="css/styles.css">
-
-  <!--[if lt IE 9]>
-  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
+<?php include 'header.html' ?>
+<title>Browse bets</title>
 </head>
 
 <body>
-	<nav id="topNav">
-		<div id="homePage"><a href="index.html">Bet A Friend</a></div>
-		<div id="mainNav">
-			<a href="create-bet.html">Create</a>
-			<a href="browse-bets.html">Browse</a>
-		</div>
-		<ul id="profileNav">
-			<li id="dropdown"><a href="profile.html">Profile</a>
-				<ul>
-					<li><a href="my-bets.html">My bets</a></li>
-					<li><a href="my-account.html">My account</a></li>
-					<li><a href="logout.html">Log out</a></li>
-				</ul>
-			</li>
-		</ul>
-	</nav>
+	<?php
+		$cookie_name = "user";
+		if(!isset($_COOKIE[$cookie_name])) {
+		    include 'navigation-unknown.html';
+		} else {
+		    include 'navigation-known.html';
+		}
+  ?>
 
 	<div class="content">
 		<h1>Browse bets</h1>

@@ -1,31 +1,9 @@
-<!doctype html>
-
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-
-  <title>register</title>
-  <meta name="description" content="Bet against your friends in everyday life">
-  <meta name="author" content="Blaz Artac">
-  <script src="javascript/jquery.js"></script>
-  <script src="javascript/main.js"></script>
-  <link rel="stylesheet" href="css/styles.css">
-
-  <!--[if lt IE 9]>
-  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
+<?php include 'header.html' ?>
+<title>Register</title>
 </head>
 
 <body>
-  <nav id="topNav">
-    <div id="homePage"><a href="index.html">Bet A Friend</a></div>
-    <div id="mainNav">
-      <a href="browse-bets.html">Browse</a>
-    </div>
-    <div id="profileNav">
-      <a href="register.html">Login/Register</a>
-    </div>
-  </nav>
+<?php include 'navigation-unknown.html'; ?>
 
   <div class="content" id="editAcc">
     <h1>Create account</h1>

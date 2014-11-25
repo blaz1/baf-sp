@@ -1,38 +1,9 @@
-<!doctype html>
-
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-
-  <title>ba3611 - profile</title>
-  <meta name="description" content="Bet against your friends in everyday life">
-  <meta name="author" content="Blaz Artac">
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <script src="javascript/main.js"></script>
-  <link rel="stylesheet" href="css/styles.css">
-
-  <!--[if lt IE 9]>
-  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
+<?php include 'header.html' ?>
+<title>Profile</title>
 </head>
 
 <body>
-	<nav id="topNav">
-		<div id="homePage"><a href="index.html">Bet A Friend</a></div>
-		<div id="mainNav">
-			<a href="create-bet.html">Create</a>
-			<a href="browse-bets.html">Browse</a>
-		</div>
-		<ul id="profileNav">
-			<li id="dropdown"><a href="profile.html">Profile</a>
-				<ul>
-					<li><a href="my-bets.html">My bets</a></li>
-					<li><a href="my-account.html">My account</a></li>
-					<li><a href="logout.html">Log out</a></li>
-				</ul>
-			</li>
-		</ul>
-	</nav>
+	<?php include 'navigation-known.html'; ?>
 
 	<div class="content">
 		<h1>Profile of ba3611</h1>
