@@ -546,7 +546,7 @@ input#editAccButton, input#regAccButton {
 }
 
 #loginButton {
-	margin:0 auto;
+	margin:0 auto 1em auto;
 }
 
 #loginPage {
@@ -556,6 +556,10 @@ input#editAccButton, input#regAccButton {
 .loginRememberMe {
 	position: relative;
 	margin:-1.2em 0 1em 0;
+}
+
+.errorLogin {
+	color:red;
 }
 
 /*END LOGIN*/

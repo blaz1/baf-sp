@@ -28,8 +28,10 @@
   	<div class="content" id="loginPage">
 
   		<h1>Login</h1>
-  		<form id="loginForm"> <?php //method="post" action="loginScript.php" ?>
-  			<div class="column floatLeft">
+  					
+
+  		<form id="loginForm" onsubmit="checkLogin();" > <?php //method="post" action="loginScript.php" ?>
+  			<div class="column floatLeft">  			
                 <div class="row">
                     <div class="col1"><label>Username: </label><br></div>
                     <div class="col2"><input size="20" type="text" id="loginName" name="username"></div>
@@ -41,9 +43,11 @@
                 <div class="loginRememberMe">
                 	<label>Remember Me: </label><input type="checkbox" name="rememberme" value="1">
                 </div>
-            <input type="submit" id="loginButton" value="Login" >                  
+
+            	<input type="submit" id="loginButton" value="Login" >                  
             
            </div> 
+           <p class="errorLogin">Wrong username or password</p>
   		</form>
 	</div>
 </body>

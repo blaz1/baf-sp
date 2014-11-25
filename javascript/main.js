@@ -1,6 +1,7 @@
 /*START CREATE BET FUNCTIONALITY*/
 
-function validateNewBet() {
+$(document).ready(function() {
+	$("#createBetForm").submit(function validateNewBet(e) {
 	var start = checkDate('#newFormStart');
 	var end = checkDate('#newFormEnd');
 	/*if (!$('#newFormName').val()) {
@@ -23,7 +24,15 @@ function validateNewBet() {
 	bool = checkDate("#newFormEnd") && bool;
 	bool = checkRuleAndOpp("#opponents", "#newFormOpp") && bool;
 	bool = checkRuleAndOpp("#rules", "#addRule") && bool;
-}
+
+	if (bool) {
+		$("#createBetForm").attr("method","post");
+		$("#createBetForm").attr("action","CreateBetScript.php");
+	} else {
+		e.preventDefault();
+	}
+});
+});
 
 function checkRuleAndOpp(a, b) {
 	var str = a + " p";
@@ -51,9 +60,9 @@ function checkIfEmpty(a) {
 function checkDate(a) {
 	var date = $(a).val();
   	var parms = date.split(/[\.\-\/]/);
-  	var yyyy = parseInt(parms[2],10);
+  	var yyyy = parseInt(parms[0],10);
   	var mm   = parseInt(parms[1],10);
-  	var dd   = parseInt(parms[0],10);
+  	var dd   = parseInt(parms[2],10);
   	var date = new Date(yyyy,mm-1,dd,0,0,0,0);
   	var bool = mm === (date.getMonth()+1) && dd === date.getDate() && yyyy === date.getFullYear();
 	if (!bool) {
@@ -72,9 +81,10 @@ function addNewRule() {
 	}	
 	var n = $('.rule').length + 1;
 	var ruleId = "rule"+n;
+	var ruleName = "newRule" + n;
 	//alert(ruleId);
 	var func = "deleteRule("+n+");";
-	var tag = "<p class='rule' id='"+ruleId+"'>"+rule+"<span class='deleteRule' onclick='"+func+"'>X</span></p>";
+	var tag = "<p class='rule' id='"+ruleId+"' name='"+ruleName+"'>"+rule+"<span class='deleteRule' onclick='"+func+"'>X</span><input type='hidden' name='"+ruleName+"' value='"+rule+"'></input></p>";
 	//alert(tag);
 	$('#rules').append(tag);
 	$('#addRule').val("");
@@ -94,9 +104,10 @@ function addOpponent() {
 	}
 	var n = $('.opponent').length + 1;
 	var oppId = "opp"+n;
+	var oppName = "newOpp"+n;
 	//alert(oppId);
 	var func = "deleteOpp("+n+");";
-	var tag = "<p class='opponent' id='"+oppId+"'>"+opp+"<span class='deleteOpp' onclick='"+func+"'>X</span></p>";
+	var tag = "<p class='opponent' id='"+oppId+"'>"+opp+"<span class='deleteOpp' onclick='"+func+"'>X</span><input type='hidden' name='"+oppName+"' value='"+opp+"'></input></p>";
 	//alert(tag);
 	$('#opponents').append(tag);
 	$('#newFormOpp').val("");
@@ -170,28 +181,52 @@ function uploadImg() {
 
 /*END EDIT ACCOUNT FUNCTIONALITY*/
 
-/*START REGISTER ACCOUNT FUNCTIONALITY*/
+/*START REGISTER ACCOUNT FUNCTIONALITY*/	
 
-function validateRegAcc () {
-	var bool = true;
-	bool = validateUsername("#regName") && bool;
-	bool = validateEmail("#regMail") && bool;
-	if (($("#regPwd1").val() !== $("#regPwd2").val()) || $("#regPwd1").val() == "") {
-		$(".editAccPwdError").css("visibility","visible");
-		bool = false;
-	} else {
-		$(".editAccPwdError").css("visibility","hidden");
-	}
-}
+$(document).ready(function() {
+
+	//$("#regForm").bind("submit", validateRegAcc(), false);
+	//$("#regForm").submit(validateRegAcc(e));
+	$("#regForm").submit(function validateRegAcc (e) {
+		var bool = true;
+		bool = validateUsername("#regName") && bool;
+		bool = validateEmail("#regMail") && bool;
+		if (($("#regPwd1").val() !== $("#regPwd2").val()) || $("#regPwd1").val() == "") {
+			$(".editAccPwdError").css("visibility","visible");
+			bool = false;
+		} else {
+			$(".editAccPwdError").css("visibility","hidden");
+		}
+
+		if (bool) {
+			 $("#regForm").attr("action","RegisterScript.php");
+			 $("#regForm").attr("method","post");
+			 //$("#regForm").submit();
+		} else {
+			e.preventDefault();
+		}
+});
+
+});
 
 /*END REGISTER ACCOUNT FUNCTIONALITY*/
 
 /*START LOGIN FUNCTIONALITY*/
 
-function checkLogin() {
-	if($("#loginButton").val() == "") {
-		$("#loginButton").css("background-color","red");
+$(document).ready(function() {
+	$("#loginForm").submit(function checkLogin (e) {
+	var t1 = checkIfEmpty("#loginName");
+	var t2 = checkIfEmpty("#loginPwd");
+
+	if (t1 && t2) {
+		$("#loginForm").attr("method","post");
+		$("#loginForm").attr("action","loginScript.php");
+	} else {
+		e.preventDefault();
 	}
-}
+	//return false;
+	//$("#loginButton").click();
+	});
+});
 
 /*END LOGIN FUNCTIONALITY*/

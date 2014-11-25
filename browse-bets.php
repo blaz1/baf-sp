@@ -14,8 +14,10 @@
 
 	<div class="content">
 		<h1>Browse bets</h1>
-		<input id="searchBets" type="text" placeholder="Search bets" onkeydown="if (event.keyCode == 13) browseBets()">
-		<button id="searchBetsButton" type="button" onclick="browseBets();">Search</button>
+		<form id="browseBetsForm">
+			<input id="searchBets" type="text" placeholder="Search bets" onkeydown="if (event.keyCode == 13) browseBets()">
+			<input id="searchBetsButton" type="button" value="Search" onclick="browseBets();">
+		</form>
 
 		<table id="searchBetsResult">
 			<thead>
