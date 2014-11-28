@@ -448,6 +448,17 @@ input#createBetButton {
 	float:right;
 }
 
+.rewards {
+	position: relative;
+	left:7.2em;
+}
+
+#getRewardsButton {
+	position: relative;
+	left:1em;
+	width:6.4em;
+}
+
 /*END CREATE BET*/
 
 /*START PROFILE*/

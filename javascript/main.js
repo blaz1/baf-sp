@@ -120,6 +120,51 @@ function deleteOpp(num) {
   	checkRuleAndOpp("#opponents", "#newFormOpp");
 }
 
+
+/*$("#newFormOpp").change(
+	function searchOpp () {
+		$("button").click(function(){
+  		$.get("demo_test.asp",function(data,status){
+   	 		alert("Data: " + data + "\nStatus: " + status);
+  		});
+	});*/
+/*
+function changeOpp() {
+	var opp = $('#newFormOpp').val();
+  		$.get("srchOpp.php?username="+opp,function(data,status){
+   	 		alert("Data: " + data + "\nStatus: " + status);
+   	 	});
+}*/
+
+function getRewards() {
+
+  if (window.XMLHttpRequest) {
+    xhr = new XMLHttpRequest();
+  } else {
+    xhr = new ActiveXObject("Microsoft.XMLHTTP");  // for older browsers
+  }
+
+// Register the embedded handler function
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+      var result = xhr.responseText;
+      var transfer = JSON.parse(result);
+      for (var key in transfer) {
+      	//alert(transfer[key]);
+      	var tag = "<div class='rewards'>"+transfer[key]+"</div>";
+      	$("#rewardRow").append(tag);
+      }
+      $("#getRewardsButton").attr("onclick","");
+      //alert(result);
+      //var place = result.split(', ');
+      /*document.getElementById("city").value = place[0];
+      document.getElementById("state").value = place[1];*/
+    }
+  }
+  xhr.open("GET", "rewards.php");
+  xhr.send(null);
+}
+
 /*END CREATE BET FUNCTIONALITY*/
 
 /*START BROWSE BET FUNCTIONALITY*/

@@ -25,9 +25,10 @@
                     <div class="col1"><label>End time: </label><br></div>
                     <div class="col2"><input type="date"size="39"placeholder="yyyy-mm-dd" id="newFormEnd" name="betEnd"></div>
                 </div>
-                <div class="row">
+                <div class="row" id="rewardRow">
                     <div class="col1"><label>Reward: </label><br></div>
                     <div class="col2"><input size="39"placeholder="Reward" id="newFormReward" name="betReward"></div>
+                    <input type="button" id="getRewardsButton" value="Get rewards" onclick="getRewards();">
                 </div>  
             </div> 
 
@@ -37,7 +38,7 @@
                         <label>Opponent(s):</label>
                     </div>
                     <div class="col2">
-                        <input class="opponentInput" id="newFormOpp" placeholder="Add opponent" onkeydown="if (event.keyCode == 13) addOpponent()" onblur='checkRuleAndOpp("#opponents", "#newFormOpp");'>
+                        <input class="opponentInput" onchange="changeOpp();" id="newFormOpp" placeholder="Add opponent" onkeydown="if (event.keyCode == 13) addOpponent()" onblur='checkRuleAndOpp("#opponents", "#newFormOpp");'>
                         <button class="addButton" type="button" value="Add" onclick="addOpponent();">Add</button>
                         <div id="opponents">
                             <!--<p class="opponent" id="opp1">Janez NOvak<span class="deleteOpp" onclick="deleteOpp('1');">X</span></p>-->
