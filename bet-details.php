@@ -4,8 +4,13 @@ $conn = new mysqli("mysql.lrk.si", "artac_blaz", "zatlok");
 $betid = $_GET['betid'];
 
 $sql = "SELECT * from artac_blaz_b1.bets WHERE id_bets='$betid'";
-$result = $conn->query($sql);
-$bet = $result->fetch_assoc();
+$bet = $conn->query($sql)->fetch_assoc();
+
+$cr = strtotime($bet["start_time"]);
+$start_date = date( 'd.m.Y', $cr );
+
+$en = strtotime($bet["start_time"]);
+$end_date = date( 'd.m.Y', $en );
 
  ?>
 
@@ -29,11 +34,11 @@ $bet = $result->fetch_assoc();
                 </div>
                 <div class="row">
                     <div class="col1"><label>Start time: </label><br></div>
-                    <div class="col2"><p><?php echo $bet['start_time'] ?></p></div>
+                    <div class="col2"><p><?php echo $start_date ?></p></div>
                 </div>
                 <div class="row">
                     <div class="col1"><label>End time: </label><br></div>
-                    <div class="col2"><p><?php echo $bet['end_time'] ?></p></div>
+                    <div class="col2"><p><?php echo $end_date ?></p></div>
                 </div>
                 <div class="row">
                     <div class="col1"><label>Reward: </label><br></div>

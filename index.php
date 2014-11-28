@@ -81,28 +81,22 @@ if(!isset($_COOKIE[$cookie_name])) {
 		<div id="mainPageStats">
 			<div class="column floatLeft">
 				<h2>Latest bets</h2>
-				<div class="betSummary">
-					<h3>
-						Karaoke
-					</h3>
-					<p class="username">janez_novak12</p>
-					<p>
-						BetAFriend application allows users to create new bets and challenge your friends or simply browse through the many of already created bets. 
-						ds or simply browse through the many of already created bets. wse through the many of already created bets. 
-						ds or simply browsgh the many of already created bets. 
-						ds or simply brows gh the many of already created bets. 
-						ds or simply brows
-					</p>					
-				</div>
-				<div class="betSummary">
-					<h3>
-						Karaoke
-					</h3>
-					<p class="username">janez_novak12</p>
-					<p>
-						BetAFriend application allows users to create new bets and challenge your friends or simply browse through the many of already created bets. 
-					</p>					
-				</div>				
+				<?php
+
+				$sql = "SELECT * FROM artac_blaz_b1.bets ORDER BY create_time DESC LIMIT 5";
+				$result = $conn->query($sql);
+				while ($row = $result->fetch_assoc()) {
+					echo "<div class='betSummary'>";
+					echo "<h3>".$row["name"]."</h3>";
+					$owner_id = $row["owner_id"];
+					$sql2 = "SELECT username FROM artac_blaz_b1.user WHERE id_user='$owner_id'";
+					$owner = $conn->query($sql2)->fetch_assoc();
+					echo "<p class='username'>".$owner["username"]."</p>";
+					echo "<p>".$row["description"]."</p>";
+					echo "</div>";
+				}
+
+				?>
 			</div>
 			<div class="column floatRight">
 				<h2>Most popular</h2>

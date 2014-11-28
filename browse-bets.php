@@ -1,3 +1,15 @@
+<?php
+
+$conn = new mysqli("mysql.lrk.si", "artac_blaz", "zatlok");
+//$betid = $_GET['betid'];
+
+$sql = "SELECT id_bets, name, description, reward, status, end_time  from artac_blaz_b1.bets";
+
+$result = $conn->query($sql);
+
+
+ ?>
+
 <?php include 'header.html' ?>
 <title>Browse bets</title>
 </head>
@@ -30,20 +42,20 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td><a href="">Pohod na golovec</a></td>
-					<td>startamo tkrt pa tkrt iz tm pa tm in pol kdor pride prej gor</td>
-					<td>In progress</td>
-					<td>en teden počitnic</td>
-					<td>17.11.2014</td>
-				</tr>
-				<tr>	
-					<td><a href="">Pohod na golovec</a></td>
-					<td>startamo tkrt pa tkrt iz tm pa tm in pol kdor pride prej gor</td>
-					<td>In progress</td>
-					<td>en teden počitnic</td>
-					<td>17.11.2014</td>
-				</tr>				
+				<?php
+					while ($row = $result->fetch_assoc()) {
+						echo "<tr>";
+						echo "<td><a href='/bet-details.php?betid=".$row["id_bets"]."'>".$row["name"]."</a></td>";
+						echo "<td>".$row["description"]."</td>";
+						echo "<td>".$row["status"]."</td>";
+						echo "<td>".$row["reward"]."</td>";
+						$phpdate = strtotime($row["end_time"]);
+						$mysqldate = date( 'd.m.Y', $phpdate );
+						echo "<td>".$mysqldate."</td>";
+						echo "</tr>";
+						
+					}
+				?>			
 			</tbody>
 		</table>
 	</div>
